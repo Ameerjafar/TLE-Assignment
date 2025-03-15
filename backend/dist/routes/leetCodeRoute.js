@@ -14,14 +14,21 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const axios_1 = __importDefault(require("axios"));
-const codeChefRoute = express_1.default.Router();
-codeChefRoute.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const response = yield axios_1.default.get('https://www.codechef.com/api/list/contests/all');
-        res.status(200).json({ futureContests: response.data.future_contests, pastContests: response.data.past_contests });
-    }
-    catch (error) {
-        res.status(500).json({ error });
-    }
+const leetCodeRoute = express_1.default.Router();
+leetCodeRoute.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const response = yield axios_1.default.post("https://leetcode.com/graphql", {
+        headers: {
+            "Content-Type": "application/json",
+        },
+        query: `{
+          topTwoContests{
+            title
+            startTime
+            duration
+            cardImg
+          }
+        }`,
+    });
+    res.status(200).json({ leetcodeContests: response.data });
 }));
-exports.default = codeChefRoute;
+exports.default = leetCodeRoute;

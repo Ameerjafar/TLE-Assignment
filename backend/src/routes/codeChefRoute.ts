@@ -5,7 +5,7 @@ const codeChefRoute = express.Router();
 codeChefRoute.get("/", async (req: Request, res: Response) => {
     try {
         const response = await axios.get('https://www.codechef.com/api/list/contests/all');
-        res.status(200).json({message: response.data})
+        res.status(200).json({futureContests: response.data.future_contests, pastContests: response.data.past_contests})
     }catch(error) {
         res.status(500).json({error});
     }

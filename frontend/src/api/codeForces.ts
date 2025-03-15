@@ -6,9 +6,9 @@ import { CodeForcesType } from '../types';
 
 export const fetchCodeforcesContest = async () => {
   try {
-    console.log("This is the codeforces url", import.meta.env.VITE_CODEFORCES_CONTESTS_API)
-    const response = await axios.get(import.meta.env.VITE_CODEFORCES_CONTESTS_API);
-    const allData: CodeForcesType[] = response.data.result;
+
+    const response = await axios.get(`${import.meta.env.VITE_BACKEND_API}/codeForcesRoute`);
+    const allData: CodeForcesType[] = response.data.firstTenData;
     const firstTenData = allData.slice(0, 10);
     return firstTenData;
   } catch (error) {
