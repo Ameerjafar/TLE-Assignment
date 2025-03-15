@@ -33,4 +33,7 @@ export interface UICardType {
   name: string;
   date: string;
   platform: string;
-};
+  isBookmarked?: boolean; 
+  onBookmark?: () => void; 
+  onRemoveBookmark?: () => void; 
+}
