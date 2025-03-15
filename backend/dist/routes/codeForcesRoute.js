@@ -14,14 +14,19 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const axios_1 = __importDefault(require("axios"));
-const codeChefRoute = express_1.default.Router();
-codeChefRoute.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+const codeForcesRoutes = express_1.default.Router();
+codeForcesRoutes.get('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const response = yield axios_1.default.get('https://www.codechef.com/api/list/contests/all');
-        res.status(200).json({ futureContests: response.data.future_contests, pastContests: response.data.past_contests });
+        const response = yield axios_1.default.get("https://codeforces.com/api/contest.list");
+        // console.log("This is the codeforces url", import.meta.env.VITE_CODEFORCES_CONTESTS_API)
+        // const response = await axios.get(import.meta.env.VITE_CODEFORCES_CONTESTS_API);
+        const allData = response.data.result;
+        const firstTenData = allData.slice(0, 10);
+        res.json({ firstTenData });
     }
     catch (error) {
-        res.status(500).json({ error });
+        console.error("Error fetching Codeforces contests:", error);
+        res.json({ error });
     }
 }));
-exports.default = codeChefRoute;
+exports.default = codeForcesRoutes;

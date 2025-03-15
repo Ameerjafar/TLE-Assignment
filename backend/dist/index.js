@@ -5,13 +5,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
-const leetCodeRoute_1 = __importDefault(require("./leetCodeRoute"));
-const codeChefRoute_1 = __importDefault(require("./codeChefRoute"));
+const route_1 = __importDefault(require("./routes/route"));
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
 app.use((0, cors_1.default)());
-app.use('/leetCodeRoute', leetCodeRoute_1.default);
-app.use('/codeChefRoute', codeChefRoute_1.default);
+app.use('/', route_1.default);
 app.listen(3000, () => {
     console.log("Backend is running on port number 3000");
 });

@@ -1,8 +1,6 @@
 import express from 'express';
 import cors from 'cors'
-
-import leetCodeRoute from './leetCodeRoute';
-import codeChefRoute from './codeChefRoute';
+import router from './routes/route';
 const app = express();
 
 
@@ -10,8 +8,8 @@ app.use(express.json());
 
 app.use(cors());
 
-app.use('/leetCodeRoute', leetCodeRoute);
-app.use('/codeChefRoute', codeChefRoute);
+app.use('/', router);
+
 
 
 app.listen(3000, () => {

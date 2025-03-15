@@ -1,1 +1,1 @@
-{"root":["./src/codechefroute.ts","./src/index.ts","./src/leetcoderoute.ts"],"version":"5.7.3"}
+{"root":["./src/index.ts","./src/routes/codechefroute.ts","./src/routes/codeforcesroute.ts","./src/routes/leetcoderoute.ts","./src/routes/route.ts"],"version":"5.7.3"}
