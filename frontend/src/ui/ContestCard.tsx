@@ -80,8 +80,7 @@ const ContestCard = ({
               rel="noopener noreferrer"
               className="flex items-center justify-center px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition-colors duration-200"
             >
-              <FaYoutube className="mr-2" /> 
-              Solution
+              <FaYoutube /> 
             </a>
           )}
         </div>
