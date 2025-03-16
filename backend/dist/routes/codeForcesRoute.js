@@ -17,12 +17,25 @@ const axios_1 = __importDefault(require("axios"));
 const codeForcesRoutes = express_1.default.Router();
 codeForcesRoutes.get('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const response = yield axios_1.default.get("https://codeforces.com/api/contest.list");
-        // console.log("This is the codeforces url", import.meta.env.VITE_CODEFORCES_CONTESTS_API)
-        // const response = await axios.get(import.meta.env.VITE_CODEFORCES_CONTESTS_API);
+        const response = yield axios_1.default.get(process.env.CODEFORCES_ALLCONTESTS_API);
         const allData = response.data.result;
-        const firstTenData = allData.slice(0, 10);
-        res.json({ firstTenData });
+        const youTubeResponse = yield axios_1.default.get(process.env.YOU_TUBE_API_URL, {
+            params: {
+                part: "snippet",
+                playlistId: process.env.CODEFORCES_PLAYILST,
+                maxResults: 50,
+                key: process.env.API_KEY
+            },
+        });
+        const videos = youTubeResponse.data.items;
+        videos.forEach((video) => {
+            console.log(video.snippet.title.split('|')[0]);
+        });
+        const codeForcesContests = allData;
+        res.json({
+            codeForcesContests,
+            videos
+        });
     }
     catch (error) {
         console.error("Error fetching Codeforces contests:", error);
