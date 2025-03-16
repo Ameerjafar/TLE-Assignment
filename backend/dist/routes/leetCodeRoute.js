@@ -16,19 +16,33 @@ const express_1 = __importDefault(require("express"));
 const axios_1 = __importDefault(require("axios"));
 const leetCodeRoute = express_1.default.Router();
 leetCodeRoute.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const response = yield axios_1.default.post("https://leetcode.com/graphql", {
+    const response = yield axios_1.default.post(process.env.LEETCODE_ALLCONTESTS_API, {
         headers: {
             "Content-Type": "application/json",
         },
         query: `{
-          topTwoContests{
+          allContests{
             title
             startTime
             duration
-            cardImg
+            originStartTime
+            isVirtual
           }
         }`,
     });
-    res.status(200).json({ leetcodeContests: response.data });
+    const youTubeResponse = yield axios_1.default.get(process.env.YOU_TUBE_API_URL, {
+        params: {
+            part: "snippet",
+            playlistId: process.env.LEETCODE_PLAYLIST,
+            maxResults: 50,
+            key: process.env.API_KEY
+        },
+    });
+    const videos = youTubeResponse.data.items;
+    videos.forEach((video) => {
+        console.log(video.snippet.title.split('|')[0]);
+    });
+    // console.log(response.data.data.allContests);
+    res.status(200).json({ leetCodeContests: response.data.data.allContests, videos });
 }));
 exports.default = leetCodeRoute;
