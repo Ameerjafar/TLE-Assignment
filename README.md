@@ -26,6 +26,10 @@ API Integration: Seamlessly integrates with third-party APIs to fetch contest da
 
 Customizable: Easily extendable to support more platforms or APIs.
 
+# Workflow Overview
+## Purpose
+The workflow automatically updates the README.md file in your repository with a list of contributors whose PRs have been merged. This ensures that the README.md file always reflects the latest contributors without manual intervention.
+
 # API USED
 
 The project relies on the following APIs to fetch contest data and integrate with YouTube:
