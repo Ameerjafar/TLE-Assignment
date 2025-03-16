@@ -89,7 +89,6 @@ node dist/index.js(node has to be downoloaded)
 <!-- CONTRIBUTORS_START -->
 ## Contributors
 
-- [Ameerjafar](https://github.com/Ameerjafar)
 <!-- CONTRIBUTORS_END -->
 
 for frontend you can listen on port: 5173
