@@ -18,7 +18,7 @@ export const fetchCodeforcesContest = async (): Promise<ContestData> => {
     const videosLink = response.data.videos;
     const codeForcesContestTitles: string[] = [];
     const videoLink: string[] = []
-    videosLink.forEach((vLink: any) => {
+    videosLink.forEach((vLink) => {
       codeForcesContestTitles.push(vLink.snippet.title.split('|')[0]);
       videoLink.push(vLink.snippet.resourceId.videoId);
   })

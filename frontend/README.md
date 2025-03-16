@@ -1,54 +1,86 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# The Competitive Programming Contest Tracker 
 
-Currently, two official plugins are available:
+The Competitive Programming Contest Tracker is a tool designed to help programmers stay updated with upcoming coding contests from popular platforms like CodeChef, LeetCode, and Codeforces. It also integrates with YouTube to provide curated playlists for tutorials, solutions, and problem discussions related to these contests.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This project is built to simplify the process of tracking coding contests and accessing relevant learning resources in one place.
 
-## Expanding the ESLint configuration
+# VIDEO 
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+# FEATURES
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Contest Tracking: Fetch upcoming and past coding contests from:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+CodeChef
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+LeetCode
+
+Codeforces
+
+YouTube Integration: Link contests to curated YouTube playlists for tutorials.
+API Integration: Seamlessly integrates with third-party APIs to fetch contest data.
+
+Customizable: Easily extendable to support more platforms or APIs.
+
+# API USED
+
+The project relies on the following APIs to fetch contest data and integrate with YouTube:
+
+1. CodeChef API
+Endpoint: https://www.codechef.com/api/list/contests/all
+
+Description: This API fetches all upcoming and past contests from CodeChef. It provides details such as contest name, start time, end time, and contest URL.
+
+Usage: Used to retrieve a list of contests hosted on CodeChef.
+
+1. LeetCode API
+Endpoint: https://leetcode.com/graphql
+
+Description: This is a GraphQL API used to fetch contest details from LeetCode. It allows querying for upcoming contests, their timings, and other relevant information.
+
+Usage: Used to retrieve contest data from LeetCode.
+
+3. Codeforces API
+Endpoint: https://codeforces.com/api/contest.list
+
+Description: This API provides a list of all contests hosted on Codeforces, including past, upcoming, and upcoming contests. It includes details like contest ID, name, duration, and start time.
+
+Usage: Used to fetch contest data from Codeforces.
+
+1. YouTube API
+Endpoint: https://youtube.googleapis.com/youtube/v3/playlistItems
+
+Description: This API is used to fetch items from a specific YouTube playlist. It requires an API key for authentication and allows retrieving video details such as title, description, and video ID.
+
+Usage: Used to fetch videos from curated playlists for tutorials, solutions, and discussions related to contests.
+
+# Setup and Installation
+git clone https://github.com/Ameerjafar/TLE-Assignment.git  
+
+setup-frontend 
+
+cd frontend
+
+npm install or npm i(node has to be downloaded)
+cp .env .env.sample
+npm run dev
+
+setup-backend
+
+cd backend 
+
+npm install or npm i 
+
+cp .env .env.sample(fill the .env file)
+
+tsc -b (build the typscript)
+
+node dist/index.js(node has to be downoloaded)
+
+for frontend you can listen on port: 5173
+
+for backend you can listen on port: 3000
+
+
+
