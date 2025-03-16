@@ -8,6 +8,9 @@ This project is built to simplify the process of tracking coding contests and ac
 # VIDEO 
 VIDEO LINK: https://drive.google.com/file/d/1v0ipaANK9zVPpGmFB-OFKtNGeSdAHTGK/view?usp=sharing
 
+# Note
+I haven't received all the past contests from LeetCode, Codeforces, and CodeChef. I have only retrieved the contests that are available in the particular playlist.
+
 # FEATURES
 
 Contest Tracking: Fetch upcoming and past coding contests from:
