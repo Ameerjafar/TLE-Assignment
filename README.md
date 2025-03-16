@@ -6,7 +6,7 @@ The Competitive Programming Contest Tracker is a tool designed to help programme
 This project is built to simplify the process of tracking coding contests and accessing relevant learning resources in one place.
 
 # VIDEO 
-VIDEO LINK: https://drive.google.com/file/d/1v0ipaANK9zVPpGmFB-OFKtNGeSdAHTGK/view?usp=sharing
+VIDEO LINK: https://drive.google.com/file/d/1oMbBBch5IKiU-lEfBCXS6OalJn61BPQa/view?usp=drive_link
 
 # Note
 I haven't received all the past contests from LeetCode, Codeforces, and CodeChef. I have only retrieved the contests that are available in the particular playlist.
