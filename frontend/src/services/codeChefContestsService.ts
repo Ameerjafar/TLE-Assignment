@@ -29,15 +29,20 @@ export const codoChefContestsService = async () => {
     contestsName[i] = "codechef" + contestsName[i];
   }
 //   console.log("This is the video", videos)
-  console.log("This is contestName", contestsName);
-  codeChefTitle.forEach((title: string, ind: number) => {
+  for(let i = 0; i < codeChefTitle.length; i++) {
+    codeChefTitle[i] = codeChefTitle[i].toLowerCase().replace(/\s/g, "")
+  }
+  // console.log("This is contestName fetch from the url", contestsName);
+  // console.log("This is the contestName fetch from the youTube", codeChefTitle);
+  // console.log("This is the you tube vidoe link", videos);
+  contestsName.forEach((title: string) => {
     console.log(title.toLowerCase().replace(/\s/g, ""));
-    const present = contestsName.indexOf(
-      title.toLowerCase().replace(/\s/g, "")
+    const present = codeChefTitle.indexOf(
+      title
     );
-    if (present !== -1 && present <= pastContests.length - 1) {
-      console.log("This is the video", videos[ind])
-        pastContests[present].solutionLink = videos[ind];
+    if (present !== -1) {
+      // console.log("This is the video", videos[ind])
+        pastContests[present].solutionLink = videos[present];
 
       filterCodeChefContests.push(pastContests[present]);
     }
