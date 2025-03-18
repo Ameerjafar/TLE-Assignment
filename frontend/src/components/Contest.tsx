@@ -7,13 +7,19 @@ import useBookmark from "../hooks/useBookmark";
 import { codeForcesContestsServices } from "../services/codeForcesContestsServices";
 import { codoChefContestsService } from "../services/codeChefContestsService";
 import { useTheme } from "../context/ThemeContext";
+import { checkAndSendReminders } from '../services/emailReminderService';
+
 
 const Contest = () => {
-  const [codeForcesContests, setCodeForcesContests] = useState<CodeForcesType[]>([]);
+  const [codeForcesContests, setCodeForcesContests] = useState<
+    CodeForcesType[]
+  >([]);
   const [leetcodeContests, setLeetcodeContests] = useState<LeetcodeType[]>([]);
   const [codeChefContests, setCodeChefContests] = useState<CodeChefType[]>([]);
   const [selectedPlatforms, setSelectedPlatforms] = useState<string[]>(["all"]);
-  const [selectedContestTypes, setSelectedContestTypes] = useState<string[]>(["all"]);
+  const [selectedContestTypes, setSelectedContestTypes] = useState<string[]>([
+    "all",
+  ]);
   const [showBookmarks, setShowBookmarks] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -34,6 +40,11 @@ const Contest = () => {
         setLeetcodeContests(leetcodeData || []);
         setCodeForcesContests(codeForcesData);
         setCodeChefContests(codeChefData);
+        checkAndSendReminders();
+
+        const interval = setInterval(checkAndSendReminders, 5 * 60 * 1000);
+
+        return () => clearInterval(interval);
       } catch (error) {
         console.error("Error fetching contests:", error);
       } finally {
@@ -93,18 +104,19 @@ const Contest = () => {
       name: contest.title,
       date: new Date(contest.startTime * 1000).toLocaleString(),
       platform: "leetcode",
-      type: new Date(contest.startTime * 1000) > new Date() ? "upcoming" : "past",
+      type:
+        new Date(contest.startTime * 1000) > new Date() ? "upcoming" : "past",
       solutionLink: contest.solutionLink,
     })),
     ...codeChefContests.map((contest) => ({
       name: contest.contest_name,
       date: contest.contest_start_date,
       platform: "codechef",
-      type: new Date(contest.contest_start_date) < new Date() ? "past" : "upcoming",
+      type:
+        new Date(contest.contest_start_date) < new Date() ? "past" : "upcoming",
       solutionLink: contest.solutionLink,
     })),
   ];
-
   const getFilteredContests = () => {
     let filteredContests = allContests.filter((contest) => {
       const platformMatch =
@@ -174,12 +186,16 @@ const Contest = () => {
     <div className="bg-white dark:bg-gray-800 shadow-lg p-6 h-full rounded-r-xl">
       <div className="flex items-center gap-2 mb-6">
         <Filter className="w-5 h-5 text-blue-600 dark:text-blue-400" />
-        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-100">Filters</h2>
+        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-100">
+          Filters
+        </h2>
       </div>
 
       <div className="space-y-6">
         <div className="border-b pb-6 dark:border-gray-700">
-          <h3 className="font-semibold mb-4 text-gray-700 dark:text-gray-300">Platform</h3>
+          <h3 className="font-semibold mb-4 text-gray-700 dark:text-gray-300">
+            Platform
+          </h3>
           {["all", "codeforces", "leetcode", "codechef"].map((platform) => (
             <FilterCheckbox
               key={platform}
@@ -191,7 +207,9 @@ const Contest = () => {
         </div>
 
         <div className="border-b pb-6 dark:border-gray-700">
-          <h3 className="font-semibold mb-4 text-gray-700 dark:text-gray-300">Contest Type</h3>
+          <h3 className="font-semibold mb-4 text-gray-700 dark:text-gray-300">
+            Contest Type
+          </h3>
           {["all", "upcoming", "past"].map((type) => (
             <FilterCheckbox
               key={type}
@@ -230,7 +248,9 @@ const Contest = () => {
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       <div className="lg:hidden bg-white dark:bg-gray-800 shadow-md p-4 sticky top-0 z-50">
         <div className="flex items-center justify-between">
-          <h1 className="text-xl font-bold text-gray-800 dark:text-gray-100">Contests</h1>
+          <h1 className="text-xl font-bold text-gray-800 dark:text-gray-100">
+            Contests
+          </h1>
           <div className="flex items-center gap-4">
             <button
               onClick={toggleTheme}
