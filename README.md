@@ -6,7 +6,7 @@ The Competitive Programming Contest Tracker is a tool designed to help programme
 This project is built to simplify the process of tracking coding contests and accessing relevant learning resources in one place.
 
 # VIDEO 
-VIDEO LINK: https://drive.google.com/file/d/1oMbBBch5IKiU-lEfBCXS6OalJn61BPQa/view?usp=drive_link
+VIDEO LINK: https://drive.google.com/file/d/1RvpqlBERtg3mkUbc2LOMGXy8hEiivEE8/view?usp=sharing
 
 # Note
 I haven't received all the past contests from LeetCode, Codeforces, and CodeChef. I have only retrieved the contests that are available in the particular playlist.
@@ -85,6 +85,13 @@ tsc -b (build the typscript)
 
 node dist/index.js(node has to be downoloaded)
 
+## Docker setup 
+cd frontend
+cp .env .env.sample(update the .env file)
+cd backend 
+cp .env .env.sample(update the .env file)
+
+run docker-compose up --build
 
 <!-- CONTRIBUTORS_START -->
 ## Contributors
@@ -92,7 +99,7 @@ node dist/index.js(node has to be downoloaded)
 - [Ameerjafar](https://github.com/Ameerjafar)
 <!-- CONTRIBUTORS_END -->
 
-for frontend you can listen on port: 5173
+for frontend you can listen on port: 8080
 
 for backend you can listen on port: 3000
 
