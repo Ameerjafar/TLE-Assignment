@@ -1,7 +1,9 @@
 import mongoose from "mongoose";
+import dotenv from 'dotenv'
+dotenv.config();
 console.log(process.env.MONGODB_URI);
 mongoose
-  .connect("mongodb://localhost:27017/contest-tracker")
+  .connect(process.env.MONGODB_URI!)
   .then(() => {
     console.log("Connected to MongoDB successfully");
   })
