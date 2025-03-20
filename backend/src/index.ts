@@ -10,8 +10,10 @@ const app = express();
 app.use(express.json());
 
 app.use(cors({
-    origin: ['https://contest-tracker-frontend.netlify.app/', 'http://localhost:8080'],
-    credentials: true
+    origin: ['https://contest-tracker-frontend.netlify.app', 'http://localhost:8080'],
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
   }));;
 
 app.use('/', router);
