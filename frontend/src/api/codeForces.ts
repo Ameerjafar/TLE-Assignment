@@ -12,7 +12,7 @@ interface ContestData  {
 
 export const fetchCodeforcesContest = async (): Promise<ContestData> => {
   try {
-
+    console.log('API URL:', import.meta.env.VITE_BACKEND_API);
     const response = await axios.get(`${import.meta.env.VITE_BACKEND_API}/codeForcesRoute`);
     const allData: CodeForcesType[] = response.data.codeForcesContests;
     const videosLink = response.data.videos;
