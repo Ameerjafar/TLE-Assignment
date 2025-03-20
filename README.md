@@ -75,6 +75,8 @@ docker-compose up --build
 
 ## 👥 Contributors
 <!-- CONTRIBUTORS_START -->
+## Contributors
+
 - [Ameerjafar](https://github.com/Ameerjafar)
 <!-- CONTRIBUTORS_END -->
 
